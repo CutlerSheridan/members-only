@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/style.css'>
+  <% if (locals.stylesheets) { %>
+  <% stylesheets.forEach(stylesheet => { %>
+  <link rel='stylesheet' href='/stylesheets/<%= stylesheet %>.css'>
+  <% }) %>
+  <% } %>
+  <title><%= title %></title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href='/'>Home</a>
+      <% if (locals.currentUser) { %>
+      <a href='/profile'>Profile</a>
+      <a href='/join'>Join the club</a>
+      <a href='/logout'>Log out</a>
+      <% } else { %>
+      <a href='/login'>Log in</a>
+      <a href='/signup'>Sign up</a>
+      <% } %>
+    </nav>
+  </header>
+  <div class='content-wrapper'>
+    <%- include(`${ejsFile}`) %>
+  </div>
+</body>
+
+</html>

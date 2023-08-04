@@ -8,9 +8,24 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
+- write signup logic
+
 #### TODO LATER
 
 ##### Features
+
+- write login form
+- write login logic
+- write logout logic
+- write profile form
+- write profile logic
+- write update-user logic
+- write join form
+- write join logic
+- write post form
+- write post logic
+- write post_card component
+- write home feed logic
 
 ##### Behavior
 
@@ -19,6 +34,12 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 - add credit
 
 #### DONE
+
+_0.1.0_
+
+- set up routes
+- set up layout.ejs
+- write signup/update-user form
 
 _0.0.0_
 

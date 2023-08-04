@@ -1,0 +1,7 @@
+.form-group {
+  margin: 1rem 0;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
