@@ -2,28 +2,36 @@
 <form method='POST' action=''>
   <div class='form-group'>
     <label for='username'>Username:</label>
-    <input class='form-control' id='username' name='username' value='<%= locals.currentUser ? currentUser.username : null %>' />
+    <input class='form-control' id='username' name='username' value='<%= locals.user ? user.username : null %>' />
   </div>
   <div class='form-group'>
     <label for='password'><%= locals.currentUser ? 'New password:' : 'Password:' %></label>
-    <input class='form-control' id='password' name='password' value='<%= locals.currentUser ? null : null %>' />
+    <input class='form-control' id='password' name='password' value='<%= locals.user ? user.password : null %>' />
   </div>
   <div class='form-group'>
     <label for='confirm-password'><%= locals.currentUser ? 'Confirm new password:' : 'Confirm password:' %></label>
-    <input class='form-control' id='confirm-password' name='confirmed_password' value='<%= locals.currentUser ? null : null %>' />
+    <input class='form-control' id='confirm-password' name='confirmed_password' value='<%= locals.confirmed_password ? confirmed_password : null %>' />
   </div>
   <div class='form-group'>
     <label for='email'>Email:</label>
-    <input class='form-control' id='email' name='email' value='<%= locals.currentUser ? currentUser.email : null %>' />
+    <input class='form-control' id='email' name='email' value='<%= locals.user ? user.email : null %>' />
   </div>
   <div class='form-group'>
     <label for='first-name'>First name:</label>
-    <input class='form-control' id='first-name' name='first_name' value='<%= locals.currentUser ? currentUser.first_name : null %>' />
+    <input class='form-control' id='first-name' name='first_name' value='<%= locals.user ? user.first_name : null %>' />
   </div>
   <div class='form-group'>
     <label for='last-name'>Last name:</label>
-    <input class='form-control' id='last-name' name='last_name' value='<%= locals.currentUser ? currentUser.last_name : null %>' />
+    <input class='form-control' id='last-name' name='last_name' value='<%= locals.user ? user.last_name : null %>' />
   </div>
 
   <button>Submit</button>
 </form>
+
+<% if(locals.errors) { %>
+<ul class='form-errorWrapper'>
+  <% errors.forEach(err =>  { %>
+  <li class='form-error'><%= err.msg %></li>
+  <% }) %>
+</ul>
+<% } %>

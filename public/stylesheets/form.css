@@ -5,3 +5,6 @@
   flex-direction: column;
   gap: 0.3rem;
 }
+.form-error {
+  color: red;
+}

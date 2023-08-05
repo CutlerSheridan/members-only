@@ -26,4 +26,4 @@ const User = (dataObj) => {
   return user;
 };
 
-modules.export = User;
+module.exports = User;
