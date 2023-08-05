@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const { db, ObjectId } = require('../configs/mongodb_config');
 const User = require('../models/User');
+const bcrypt = require('bcryptjs');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -72,10 +73,6 @@ router.post('/signup', [
   asyncHandler(async (req, res, next) => {
     const user = User(req.body);
     const errors = validationResult(req);
-    console.log('user: ', user);
-    errors.array().forEach((err) => {
-      console.log('Error: ', err.msg);
-    });
     if (!errors.isEmpty()) {
       res.render('layout', {
         ejsFile: 'info_form',
@@ -86,7 +83,10 @@ router.post('/signup', [
         errors: errors.array(),
       });
     } else {
-      await db.collection('users').insertOne(user);
+      bcrypt.hash(req.body.password, 10, async (err, hashedPass) => {
+        user.password = hashedPass;
+        await db.collection('users').insertOne(user);
+      });
       res.redirect('/');
     }
     res.send('NOT IMPLEMENTED: Signup post');

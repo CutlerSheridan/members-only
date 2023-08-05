@@ -8,15 +8,14 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- add password encryption to signup form
+- write login form
+- write login logic
+- write logout logic
 
 #### TODO LATER
 
 ##### Features
 
-- write login form
-- write login logic
-- write logout logic
 - write profile form
 - write profile logic
 - write update-user logic
@@ -34,6 +33,10 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 - add credit
 
 #### DONE
+
+_0.1.2_
+
+- add password encryption to signup form
 
 _0.1.1_
 
