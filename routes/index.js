@@ -12,16 +12,13 @@ router.get('/', function (req, res, next) {
   res.render('layout', { ejsFile: 'index', title: 'Members Only' });
 });
 
-router.get(
-  '/signup',
-  asyncHandler(async (req, res, next) => {
-    res.render('layout', {
-      ejsFile: 'info_form',
-      title: 'Sign Up',
-      stylesheets: ['form'],
-    });
-  })
-);
+router.get('/signup', (req, res, next) => {
+  res.render('layout', {
+    ejsFile: 'info_form',
+    title: 'Sign Up',
+    stylesheets: ['form'],
+  });
+});
 router.post('/signup', [
   body('username')
     .trim()
@@ -152,21 +149,21 @@ router.get('/logout', (req, res, next) => {
   });
 });
 
-router.get(
-  '/profile',
-  asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: Profile get');
-  })
-);
+router.get('/profile', (req, res, next) => {
+  res.render('layout', {
+    ejsFile: 'profile',
+    title: 'Profile',
+  });
+});
 
 router.get(
-  '/update-user',
+  '/edit-profile',
   asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: Update get');
   })
 );
 router.post(
-  '/update-user',
+  '/edit-profile',
   asyncHandler(async (req, res, next) => {
     res.send('NOT IMPLEMENTED: Update post');
   })

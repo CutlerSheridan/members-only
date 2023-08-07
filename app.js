@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const User = require('./models/User');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -20,7 +21,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use((req, res, next) => {
-  res.locals.currentUser = req.user;
+  if (req.user) {
+    res.locals.currentUser = User(req.user);
+  } else {
+    res.locals.currentUser = req.user;
+  }
   next();
 });
 
