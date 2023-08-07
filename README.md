@@ -8,9 +8,7 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- write login form
-- write login logic
-- write logout logic
+- write update-user logic
 
 #### TODO LATER
 
@@ -18,7 +16,6 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 - write profile form
 - write profile logic
-- write update-user logic
 - write join form
 - write join logic
 - write post form
@@ -28,11 +25,24 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 ##### Behavior
 
+- add indices to db for:
+  - users: {username: 1}
+    - passport_config.js in LocalStrategy
+    - post('/signup') body('username').custom()
+    - post('/login') body('username').custom()
+
 ##### Style
 
 - add credit
 
 #### DONE
+
+_0.1.3_
+
+- write login form
+- write login logic
+- get passport.authenticate to pass along specific error message when authentication fails
+- write logout logic
 
 _0.1.2_
 

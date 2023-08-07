@@ -5,6 +5,7 @@ const { body, validationResult } = require('express-validator');
 const { db, ObjectId } = require('../configs/mongodb_config');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const passport = require('../configs/passport_config');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -28,10 +29,10 @@ router.post('/signup', [
     .notEmpty()
     .withMessage('Username is required')
     .bail()
-    .custom(async (value, { req }) => {
+    .custom(async (value) => {
       const existingUser = await db
         .collection('users')
-        .findOne({ username: req.body.username });
+        .findOne({ username: value });
       if (existingUser) {
         throw new Error('Username is taken');
       }
@@ -41,6 +42,7 @@ router.post('/signup', [
     .withMessage('Username may only contain letters and numbers'),
   body('password')
     .trim()
+    .blacklist(/[<>]/)
     .notEmpty()
     .withMessage('Password is required')
     .bail()
@@ -54,7 +56,7 @@ router.post('/signup', [
     .withMessage('Password must contain at least one number')
     .matches(/[!@#$%^&*(){}[\].?-_+=`]/)
     .withMessage(
-      'Password must contain 1 of the following: ! @ # $ % ^ & * ( ) { } [ ] . ? - _ += `'
+      'Password must contain 1 of the following: ! @ # $ % ^ & * ( ) { } [ ] . ? - _ + = `'
     ),
   body('confirmed_password', 'Passwords must match')
     .trim()
@@ -94,16 +96,60 @@ router.post('/signup', [
 ]);
 
 router.get('/login', (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Login get');
+  res.render('layout', {
+    ejsFile: 'login',
+    title: 'Log In',
+    stylesheets: ['form'],
+  });
 });
-router.post(
-  '/login',
+router.post('/login', [
+  body('username', 'Please fill in username').trim().escape().notEmpty(),
+  body('password', 'Please fill in password')
+    .trim()
+    .blacklist(/[<>]/)
+    .notEmpty(),
   asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: Login post');
-  })
-);
+    const errors = validationResult(req);
+    const user = User(req.body);
+    if (!errors.isEmpty()) {
+      res.render('layout', {
+        ejsFile: 'login',
+        title: 'Log In',
+        stylesheets: ['form'],
+        user,
+        errors: errors.array(),
+      });
+    } else {
+      passport.authenticate('local', (err, userResponse, info) => {
+        if (err) {
+          return next(err);
+        }
+        if (!userResponse) {
+          return res.render('layout', {
+            ejsFile: 'login',
+            title: 'Log In',
+            stylesheets: ['form'],
+            user,
+            errors: [{ msg: info.message }],
+          });
+        }
+        req.login(userResponse, (err) => {
+          if (err) {
+            return next(err);
+          }
+          return res.redirect('/');
+        });
+      })(req, res, next);
+    }
+  }),
+]);
 router.get('/logout', (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Logout get');
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('back');
+  });
 });
 
 router.get(

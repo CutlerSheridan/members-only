@@ -1,0 +1,22 @@
+<h1><%= title %></h1>
+
+<form method='POST' action=''>
+  <div class="form-group">
+    <label for="login-username">Username:</label>
+    <input class='form-control' id='login-username' name='username' value='<%= locals.user ? user.username : null %>' />
+  </div>
+  <div class="form-group">
+    <label for="login-password">Password:</label>
+    <input type="password" class='form-control' id='login-password' name='password' value='<%= locals.user ? user.password : null %>' />
+  </div>
+
+  <button>Log in</button>
+</form>
+
+<% if(locals.errors) { %>
+<ul class='form-errorWrapper'>
+  <% errors.forEach(err =>  { %>
+  <li class='form-error'><%= err.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
