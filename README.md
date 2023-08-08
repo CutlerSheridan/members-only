@@ -8,14 +8,14 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- write edit-profile logic
+- redirect edit form if not signed in
+- write join form
+- write join logic
 
 #### TODO LATER
 
 ##### Features
 
-- write join form
-- write join logic
 - write post form
 - write post logic
 - write post_card component
@@ -35,6 +35,13 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 - add credit
 
 #### DONE
+
+_0.2.1_
+
+- write edit-profile logic
+- get user object to pass to username validator correctly from req.user instead of res.locals.currentUser
+- only update password if filled in
+- don't auto-populate password field if password matches hashed password in DB
 
 _0.2.0_
 

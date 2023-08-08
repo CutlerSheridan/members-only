@@ -6,9 +6,11 @@ const { db, ObjectId } = require('../configs/mongodb_config');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const passport = require('../configs/passport_config');
+const debug = require('debug')('route-validation');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+  debug('test');
   res.render('layout', { ejsFile: 'index', title: 'Members Only' });
 });
 
@@ -156,18 +158,114 @@ router.get('/profile', (req, res, next) => {
   });
 });
 
-router.get(
-  '/edit-profile',
+router.get('/edit-profile', (req, res, next) => {
+  res.render('layout', {
+    ejsFile: 'info_form',
+    title: 'Update Profile',
+    stylesheets: ['form'],
+  });
+});
+router.post('/edit-profile', [
+  (req, res, next) => {
+    debug('res.locals.currentUser in 1st func.: ', req.user);
+    debug(
+      'first func: ',
+      req.body.username && req.body.username !== req.user.username
+    );
+    debug('req.body.username: ', req.body.username);
+    next();
+  },
+  body('username')
+    .if((value, { req }) => {
+      return value && value !== req.user.username;
+    })
+    .trim()
+    .escape()
+    .custom(async (value, { req }) => {
+      const existingUser = await db
+        .collection('users')
+        .findOne({ username: value });
+      if (existingUser) {
+        debug('there is an existing user');
+        throw new Error('Username is taken');
+      }
+    })
+    .bail()
+    .isAlphanumeric()
+    .withMessage('Username may only contain letters and numbers'),
+  body('password')
+    .if(body('password').notEmpty())
+    .trim()
+    .blacklist(/[<>]/)
+    .isLength({ min: 8 })
+    .withMessage('Password must be at least 8 characters')
+    .matches(/[A-Z]/)
+    .withMessage('Password must contain at least 1 uppercase letter')
+    .matches(/[a-z]/)
+    .withMessage('Password must contain at least 1 lowercase letter')
+    .matches(/[0-9]/)
+    .withMessage('Password must contain at least one number')
+    .matches(/[!@#$%^&*(){}[\].?-_+=`]/)
+    .withMessage(
+      'Password must contain 1 of the following: ! @ # $ % ^ & * ( ) { } [ ] . ? - _ + = `'
+    ),
+  body('confirmed_password', 'Passwords must match')
+    .if(body('password').notEmpty())
+    .trim()
+    .custom((value, { req }) => req.body.password === value),
+  body('email')
+    .if((value, { req }) => {
+      return value && value !== req.user.email;
+    })
+    .trim()
+    .escape()
+    .isEmail()
+    .withMessage('Email is invalid'),
+  body('first_name', 'First name is required')
+    .if(body('first_name').notEmpty())
+    .trim()
+    .escape(),
+  body('last_name', 'Last name is required')
+    .if(body('last_name').notEmpty())
+    .trim()
+    .escape(),
   asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: Update get');
-  })
-);
-router.post(
-  '/edit-profile',
-  asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: Update post');
-  })
-);
+    const user = User(req.user);
+    for (let prop in user) {
+      if (req.body[prop] && user[prop] !== req.body[prop]) {
+        user[prop] = req.body[prop];
+      }
+    }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      if (user.password === res.locals.currentUser.password) {
+        user.password = null;
+      }
+      res.render('layout', {
+        ejsFile: 'info_form',
+        title: 'Update Profile',
+        stylesheets: ['form'],
+        user,
+        confirmed_password: req.body.confirmed_password,
+        errors: errors.array(),
+      });
+    } else {
+      if (user.password && user.password !== req.user.password) {
+        bcrypt.hash(req.body.password, 10, async (err, hashedPass) => {
+          user.password = hashedPass;
+          await db
+            .collection('users')
+            .updateOne({ _id: user._id }, { $set: user });
+        });
+      } else {
+        await db
+          .collection('users')
+          .updateOne({ _id: user._id }, { $set: user });
+      }
+      res.redirect('/profile');
+    }
+  }),
+]);
 
 router.get(
   '/join',
