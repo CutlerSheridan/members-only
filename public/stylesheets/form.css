@@ -8,3 +8,9 @@
 .form-error {
   color: red;
 }
+textarea.form-control {
+  height: 15ch;
+  width: 45rem;
+  max-width: 90vw;
+  white-space: pre-wrap;
+}

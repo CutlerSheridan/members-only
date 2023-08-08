@@ -4,6 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const { db, ObjectId } = require('../configs/mongodb_config');
 const User = require('../models/User');
+const Post = require('../models/Post');
 const bcrypt = require('bcryptjs');
 const passport = require('../configs/passport_config');
 const debug = require('debug')('route-validation');
@@ -303,13 +304,34 @@ router.post('/join', [
 ]);
 
 router.get('/post', (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Post get');
+  res.render('layout', {
+    ejsFile: 'make_post',
+    title: 'New Post',
+    stylesheets: ['form'],
+  });
 });
-router.get(
-  '/post',
+router.post('/post', [
+  body('post_title', 'Title is required').trim().notEmpty(),
+  body('post_content', 'Post content is required').trim().notEmpty(),
   asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: Post post');
-  })
-);
+    const errors = validationResult(req);
+    const post = Post({
+      title: req.body.post_title,
+      content: req.body.post_content,
+      submitted_by: req.user._id,
+    });
+    if (!errors.isEmpty()) {
+      return res.render('layout', {
+        ejsFile: 'make_post',
+        title: 'New Post',
+        stylesheets: ['form'],
+        post,
+        errors: errors.array(),
+      });
+    }
+    await db.collection('posts').insertOne(post);
+    res.redirect('/');
+  }),
+]);
 
 module.exports = router;

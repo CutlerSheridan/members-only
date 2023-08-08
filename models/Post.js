@@ -2,14 +2,14 @@ const _postSchema = ({
   _id,
   date = Date.now(),
   title,
-  message,
+  content,
   submitted_by,
 }) => {
   return {
     _id,
     date,
     title,
-    message,
+    content,
     submitted_by,
   };
 };
@@ -21,4 +21,4 @@ const Post = (dataObj) => {
   return post;
 };
 
-modules.export = Post;
+module.exports = Post;

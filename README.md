@@ -8,8 +8,7 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- write post form
-- write post logic
+- add date display method for Post objects
 
 #### TODO LATER
 
@@ -36,6 +35,11 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### DONE
 
+_0.3.0_
+
+- write post form
+- write post logic
+
 _0.2.3_
 
 - write join form
@@ -44,7 +48,7 @@ _0.2.3_
 
 _0.2.2_
 
-- redirect profile edit form if not signed in
+- redirect profile edit form to login form if not signed in
 
 _0.2.1_
 
