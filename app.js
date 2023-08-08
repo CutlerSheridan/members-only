@@ -21,6 +21,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use((req, res, next) => {
+  // It already follows the User schema it just doesn't have the functions
   if (req.user) {
     res.locals.currentUser = User(req.user);
   } else {

@@ -8,15 +8,13 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- write join form
-- write join logic
+- write post form
+- write post logic
 
 #### TODO LATER
 
 ##### Features
 
-- write post form
-- write post logic
 - write post_card component
 - write home feed logic
 
@@ -31,9 +29,18 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 ##### Style
 
 - style profile
+- style signup
+- style login
+- style join
 - add credit
 
 #### DONE
+
+_0.2.3_
+
+- write join form
+- write join logic
+- make join view show check mark instead of input when a member of the club or admin
 
 _0.2.2_
 

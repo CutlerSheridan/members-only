@@ -262,18 +262,45 @@ router.post('/edit-profile', [
   }),
 ]);
 
-router.get(
-  '/join',
+router.get('/join', (req, res, next) => {
+  res.render('layout', {
+    ejsFile: 'join',
+    title: 'Join the Club',
+    stylesheets: ['form'],
+  });
+});
+router.post('/join', [
+  body('club_password', 'Club password is incorrect')
+    .optional({ values: 'falsy' })
+    .trim()
+    .escape()
+    .matches(process.env.CLUB_PASSWORD, 'i'),
+  body('admin_password', 'Admin password is incorrect')
+    .optional({ values: 'falsy' })
+    .trim()
+    .escape()
+    .matches(process.env.ADMIN_PASSWORD, 'i'),
   asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: Join get');
-  })
-);
-router.post(
-  '/join',
-  asyncHandler(async (req, res, next) => {
-    res.send('NOT IMPLEMENTED: Join post');
-  })
-);
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.render('layout', {
+        ejsFile: 'join',
+        title: 'Join the Club',
+        stylesheets: ['form'],
+        errors: errors.array(),
+      });
+    }
+    const clubStatus = !!req.body.club_password;
+    const adminStatus = !!req.body.admin_password;
+    await db
+      .collection('users')
+      .updateOne(
+        { _id: req.user._id },
+        { $set: { isMember: clubStatus, isAdmin: adminStatus } }
+      );
+    res.redirect('/join');
+  }),
+]);
 
 router.get('/post', (req, res, next) => {
   res.send('NOT IMPLEMENTED: Post get');

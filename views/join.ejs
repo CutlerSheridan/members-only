@@ -1,0 +1,40 @@
+<h1><%= title %></h1>
+
+<% if (locals.currentUser) { %>
+
+<p>We don't let just anyone join.</p>
+<p>If you've been invited, enter the password.</p>
+
+<form method='POST' action=''>
+  <div class="form-group">
+    <div class='join-labelGroup'>
+      <label for='club-password'>Club Member</label>
+      <%- currentUser.isMember ? "<span class='join-status'>✅</span>" : '' %>
+    </div>
+    <%- currentUser.isMember ? '' : "<input type='password' class='form-control' id='club-password' name='club_password' />" %>
+  </div>
+  <div class="form-group">
+    <div class='join-labelGroup'>
+      <label for='admin-password'>Admin</label>
+      <%- currentUser.isAdmin ? "<span class='join-status'>✅</span>" : '' %>
+    </div>
+    <%- currentUser.isAdmin ? '' : "<input type='password' class='form-control' id='admin-password' name='admin_password' />" %>
+  </div>
+  <button>Join</button>
+</form>
+
+<% if(locals.errors) { %>
+<ul class='form-errorWrapper'>
+  <% errors.forEach(err =>  { %>
+  <li class='form-error'><%= err.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<% } else { %>
+<p>If you want to join the club, you'll have to log in first.</p>
+<% } %>
+
+<div style='display:none'>
+  asdASD123!@#
+</div>
