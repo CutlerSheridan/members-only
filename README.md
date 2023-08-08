@@ -8,13 +8,12 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- add date display method for Post objects
+- write post_card component
 
 #### TODO LATER
 
 ##### Features
 
-- write post_card component
 - write home feed logic
 
 ##### Behavior
@@ -34,6 +33,10 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 - add credit
 
 #### DONE
+
+_0.3.1_
+
+- add date display method for Post objects
 
 _0.3.0_
 
