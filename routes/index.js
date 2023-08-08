@@ -10,10 +10,35 @@ const passport = require('../configs/passport_config');
 const debug = require('debug')('route-validation');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  debug('test');
-  res.render('layout', { ejsFile: 'index', title: 'Members Only' });
-});
+router.get(
+  '/',
+  asyncHandler(async (req, res, next) => {
+    const postDocs = await db
+      .collection('posts')
+      .aggregate([
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'submitted_by',
+            foreignField: '_id',
+            as: 'user_info',
+          },
+        },
+      ])
+      .toArray();
+    const posts = postDocs.map((x) => Post(x));
+    for (let i = 0; i < postDocs.length; i++) {
+      posts[i].user_info = postDocs[i].user_info;
+    }
+    posts.reverse();
+    res.render('layout', {
+      ejsFile: 'index',
+      title: 'Members Only',
+      stylesheets: ['post_card'],
+      posts,
+    });
+  })
+);
 
 router.get('/signup', (req, res, next) => {
   res.render('layout', {

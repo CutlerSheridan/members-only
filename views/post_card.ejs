@@ -1,0 +1,12 @@
+<div class='post-card'>
+  <h2 class='post-title'><%= post.title %></h2>
+  <p class='post-content'><%= post.content %></p>
+  <% if (locals.currentUser) { %>
+  <hr />
+  <div class='card-attribution'>
+    <div>Posted by @<%= post.user_info[0].username %></div>
+    <div>•</div>
+    <div><%= post.formatDate() %></div>
+  </div>
+  <% } %>
+</div>

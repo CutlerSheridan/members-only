@@ -8,13 +8,11 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- write post_card component
+- style home
 
 #### TODO LATER
 
 ##### Features
-
-- write home feed logic
 
 ##### Behavior
 
@@ -33,6 +31,15 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 - add credit
 
 #### DONE
+
+_0.3.2_
+
+- write post_card component
+- write home feed logic
+- make home feed reverse chronological
+- change '-' to 'at' on card attribution
+- remove debugs from Post
+- make post content retain line breaks and spaces
 
 _0.3.1_
 
