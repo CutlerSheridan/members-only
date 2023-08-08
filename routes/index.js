@@ -159,22 +159,17 @@ router.get('/profile', (req, res, next) => {
 });
 
 router.get('/edit-profile', (req, res, next) => {
-  res.render('layout', {
-    ejsFile: 'info_form',
-    title: 'Update Profile',
-    stylesheets: ['form'],
-  });
+  if (!req.user) {
+    res.redirect('/login');
+  } else {
+    res.render('layout', {
+      ejsFile: 'info_form',
+      title: 'Update Profile',
+      stylesheets: ['form'],
+    });
+  }
 });
 router.post('/edit-profile', [
-  (req, res, next) => {
-    debug('res.locals.currentUser in 1st func.: ', req.user);
-    debug(
-      'first func: ',
-      req.body.username && req.body.username !== req.user.username
-    );
-    debug('req.body.username: ', req.body.username);
-    next();
-  },
   body('username')
     .if((value, { req }) => {
       return value && value !== req.user.username;

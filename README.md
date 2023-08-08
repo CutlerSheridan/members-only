@@ -8,7 +8,6 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- redirect edit form if not signed in
 - write join form
 - write join logic
 
@@ -35,6 +34,10 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 - add credit
 
 #### DONE
+
+_0.2.2_
+
+- redirect profile edit form if not signed in
 
 _0.2.1_
 
