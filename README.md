@@ -32,6 +32,11 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### DONE
 
+_0.3.3_
+
+- make card attribution only appear for members or admin
+- save test user data in .env
+
 _0.3.2_
 
 - write post_card component
