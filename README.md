@@ -16,20 +16,18 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 ##### Behavior
 
-- add indices to db for:
-  - users: {username: 1}
-    - passport_config.js in LocalStrategy
-    - post('/signup') body('username').custom()
-    - post('/login') body('username').custom()
-
 ##### Style
 
-- style profile
 - decide on fonts
-- make headings bigger
 - add credit
 
 #### DONE
+
+_0.4.2_
+
+- make headings bigger
+- underline post card headings
+- style profile
 
 _0.4.1_
 

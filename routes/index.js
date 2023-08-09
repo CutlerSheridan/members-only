@@ -181,6 +181,7 @@ router.get('/profile', (req, res, next) => {
   res.render('layout', {
     ejsFile: 'profile',
     title: 'Profile',
+    stylesheets: ['profile'],
   });
 });
 

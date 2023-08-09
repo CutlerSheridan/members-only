@@ -22,6 +22,9 @@ body {
   width: 100%;
   font-size: 2rem;
 }
+h1 {
+  font-size: 2.8rem;
+}
 a,
 button {
   padding: 0.3rem 0.5rem;

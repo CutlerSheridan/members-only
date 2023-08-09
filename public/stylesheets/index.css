@@ -4,6 +4,9 @@
   border: 2px solid var(--clr-3);
   color: var(--clr-3);
 }
+.index-plaque > h1 {
+  margin-bottom: 0.5rem;
+}
 .index-plaque > a {
   background: var(--clr-3);
   color: var(--clr-1);
