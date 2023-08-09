@@ -1,4 +1,4 @@
-<div class="plaque">
+<div class="plaque join-plaque">
   <h1><%= title %></h1>
 
   <% if (locals.currentUser) { %>
@@ -21,7 +21,9 @@
       </div>
       <%- currentUser.isAdmin ? null : "<input type='password' class='form-control' id='admin-password' name='admin_password' />" %>
     </div>
+    <% if (!currentUser.isMember || !currentUser.isAdmin) { %>
     <button>Join</button>
+    <% } %>
   </form>
 
   <% } else { %>

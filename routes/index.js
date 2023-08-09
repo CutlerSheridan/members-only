@@ -292,7 +292,7 @@ router.get('/join', (req, res, next) => {
   res.render('layout', {
     ejsFile: 'join',
     title: 'Join the Club',
-    stylesheets: ['form'],
+    stylesheets: ['form', 'join'],
   });
 });
 router.post('/join', [
@@ -312,18 +312,20 @@ router.post('/join', [
       return res.render('layout', {
         ejsFile: 'join',
         title: 'Join the Club',
-        stylesheets: ['form'],
+        stylesheets: ['form', 'join'],
         errors: errors.array(),
       });
     }
-    const clubStatus = !!req.body.club_password;
-    const adminStatus = !!req.body.admin_password;
+    const fieldsToSet = {};
+    if (req.body.club_password) {
+      fieldsToSet.isMember = true;
+    }
+    if (req.body.admin_password) {
+      fieldsToSet.isAdmin = true;
+    }
     await db
       .collection('users')
-      .updateOne(
-        { _id: req.user._id },
-        { $set: { isMember: clubStatus, isAdmin: adminStatus } }
-      );
+      .updateOne({ _id: req.user._id }, { $set: fieldsToSet });
     res.redirect('/join');
   }),
 ]);

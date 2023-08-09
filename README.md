@@ -8,9 +8,6 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- style nav for different screen widths
-- style nav color
-
 #### TODO LATER
 
 ##### Features
@@ -28,12 +25,19 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 ##### Style
 
 - style profile
-- style join
 - decide on fonts
 - make headings bigger
 - add credit
 
 #### DONE
+
+_0.4.1_
+
+- style nav for different screen widths
+- fix Join so, if you're a member or an admin, giving the password for the other one doesn't undo your current status
+- style join
+- style nav color
+- clean up color vars
 
 _0.4.0_
 
