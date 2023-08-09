@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
+<div class="plaque index-plaque">
   <h1><%= title %></h1>
   <p>Welcome to <%= title %></p>
-  <a href='/post'>Make post!</a>
+  <a class='index-postButton' href='/post'>Make post</a>
+</div>
+
+<div class="post-feed">
   <% posts.forEach(post => { %>
   <%- include('post_card', {post}) %>
   <% }) %>
-</body>
-
-</html>
+</div>

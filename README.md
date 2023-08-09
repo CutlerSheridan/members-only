@@ -2,17 +2,20 @@
 
 ## A message board with varying degrees of accessibility depending on if user is signed in, a club member, and/or an admin
 
-Post messages. If you're not signed in, you can view messages, but not who posted them. If you are signed in and a club member, you can see who posted them. If you're an admin, you can delete them, too.
+Post messages. If you're not signed in, you can view messages, but not who posted them. If you are signed in and you are a club member, you can see who posted them. If you're an admin, you can delete them, too.
 
 Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### TODO NEXT
 
-- style home
+- style nav for different screen widths
+- style nav color
 
 #### TODO LATER
 
 ##### Features
+
+- add ability for admin to delete messages
 
 ##### Behavior
 
@@ -25,12 +28,23 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 ##### Style
 
 - style profile
-- style signup
-- style login
 - style join
+- decide on fonts
+- make headings bigger
 - add credit
 
 #### DONE
+
+_0.4.0_
+
+- decide on style for site
+- style plaques
+- style post cards
+- style post feed
+- style index-plaque
+- style buttons and links
+- style login
+- style signup
 
 _0.3.3_
 

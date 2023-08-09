@@ -26,7 +26,7 @@ router.get(
         },
       ])
       .toArray();
-    const posts = postDocs.map((x) => Post(x));
+    const posts = postDocs.map((x) => Post(x)) || [];
     for (let i = 0; i < postDocs.length; i++) {
       posts[i].user_info = postDocs[i].user_info;
     }
@@ -34,7 +34,7 @@ router.get(
     res.render('layout', {
       ejsFile: 'index',
       title: 'Members Only',
-      stylesheets: ['post_card'],
+      stylesheets: ['index', 'post_card'],
       posts,
     });
   })

@@ -1,17 +1,23 @@
-<h1><%= title %></h1>
+<div class="plaque">
+  <h1><%= title %></h1>
 
-<% if (locals.currentUser) { %>
-<form method='POST' action=''>
-  <div class="form-group">
-    <label for="post-title">Title:</label>
-    <input class="form-control" id='post-title' name='post_title' value='<%= locals.post ? post.title : null %>' />
-  </div>
-  <div class="form-group">
-    <label for="post-content">Content:</label>
-    <textarea class="form-control" id='post-content' name='post_content'><%= locals.post ? post.content : null %></textarea>
-  </div>
-  <button>Post</button>
-</form>
+  <% if (locals.currentUser) { %>
+  <form method='POST' action=''>
+    <div class="form-group">
+      <label for="post-title">Title:</label>
+      <input class="form-control" id='post-title' name='post_title' value='<%= locals.post ? post.title : null %>' />
+    </div>
+    <div class="form-group">
+      <label for="post-content">Content:</label>
+      <textarea class="form-control" id='post-content' name='post_content'><%= locals.post ? post.content : null %></textarea>
+    </div>
+    <button>Post</button>
+  </form>
+
+  <% } else { %>
+  <p>Log in to post on the message board.</p>
+  <% } %>
+</div>
 
 <% if(locals.errors) { %>
 <ul class='form-errorWrapper'>
@@ -19,8 +25,4 @@
   <li class='form-error'><%= err.msg %></li>
   <% }) %>
 </ul>
-<% } %>
-
-<% } else { %>
-<p>Log in to post on the message board.</p>
 <% } %>

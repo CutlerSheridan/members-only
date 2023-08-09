@@ -1,13 +1,15 @@
-<h1><%= title %></h1>
-<% if (locals.currentUser) { %>
-<h2>Username: <%= currentUser.username %></h2>
+<div class="plaque">
+  <h1><%= title %></h1>
+  <% if (locals.currentUser) { %>
+  <h2>Username: <%= currentUser.username %></h2>
 
-<p>Name: <%= currentUser.getFullName() %></p>
+  <p>Name: <%= currentUser.getFullName() %></p>
 
-<p>Email: <%= currentUser.email %></p>
-<p>Member: <%= currentUser.isMember ? '✅' : '❌' %></p>
-<p>Admin: <%= currentUser.isAdmin ? '✅' : '❌' %></p>
-<a href='/edit-profile'>Edit profile</a>
-<% } else { %>
-<p>Log in to view your profile.</p>
-<% } %>
+  <p>Email: <%= currentUser.email %></p>
+  <p>Member: <%= currentUser.isMember ? '✅' : '❌' %></p>
+  <p>Admin: <%= currentUser.isAdmin ? '✅' : '❌' %></p>
+  <a href='/edit-profile'>Edit profile</a>
+  <% } else { %>
+  <p>Log in to view your profile.</p>
+  <% } %>
+</div>

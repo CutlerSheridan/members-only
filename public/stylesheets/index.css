@@ -1,0 +1,20 @@
+.index-plaque {
+  background: var(--clr-1);
+  border: 2px solid var(--clr-5);
+  color: var(--clr-5);
+}
+.index-plaque > a {
+  background: var(--clr-5);
+  color: var(--clr-1);
+}
+.index-plaque > a:hover {
+  background: var(--clr-6);
+}
+@media only screen and (touch: touch) {
+  .index-plaque > a:hover {
+    background: var(--clr-5);
+  }
+  .index-plaque > a:active {
+    background: var(--clr-6);
+  }
+}

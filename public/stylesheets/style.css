@@ -1,5 +1,15 @@
 :root {
+  --clr-1: rgb(30, 30, 30);
+  --clr-2: rgb(88, 88, 88);
+  --clr-3: crimson;
+  --clr-3-light: rgb(219, 68, 99);
+  --clr-4: rgb(255, 217, 0);
+  --clr-5: rgb(242, 242, 242);
+  --clr-6: rgb(200, 200, 200);
+  font-family: Helvetica, sans-serif;
   font-size: 62.5%;
+  color: var(--clr-1);
+  background-color: var(--clr-1);
 }
 *,
 *::before,
@@ -15,11 +25,63 @@ body {
   width: 100%;
   font-size: 2rem;
 }
+a,
+button {
+  padding: 0.3rem 0.5rem;
+  background: var(--clr-1);
+  color: var(--clr-5);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+a:hover,
+button:hover {
+  background: var(--clr-2);
+}
+@media only screen and (touch: touch) {
+  a:hover,
+  button:hover {
+    background: var(--clr-5);
+  }
+  a:active,
+  button:active {
+    background: var(--clr-2);
+  }
+}
+
+/* NAVBAR START */
+header {
+  background: var(--clr-3);
+}
+nav {
+  height: 6rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+/* NAVBAR END */
 
 .content-wrapper {
-  margin: auto;
+  margin: 1.5rem auto;
   max-width: 80rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.plaque {
+  margin: 0 1.5rem 1.5rem 1.5rem;
+  padding: 1.5rem 2.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--clr-1);
+  background: var(--clr-5);
+}
+.plaque button,
+.plaque a {
+  margin-top: 1rem;
+}
+.plaque > p {
+  text-align: center;
 }
