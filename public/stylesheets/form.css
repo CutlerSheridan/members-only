@@ -1,19 +1,16 @@
-/* form {
-  padding: 1.5rem;
-} */
+form {
+  width: 80vw;
+  max-width: 33rem;
+}
 .form-group {
   margin: 1rem 0;
-  max-width: 30rem;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
+.form-control {
+  padding: 0.2rem 0.5rem;
+}
 .form-error {
   color: red;
-}
-textarea.form-control {
-  height: 15ch;
-  width: 45rem;
-  max-width: 85vw;
-  white-space: pre-wrap;
 }

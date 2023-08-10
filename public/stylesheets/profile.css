@@ -2,3 +2,23 @@
   align-items: flex-start;
   gap: 0.5rem;
 }
+.profile-plaque > h1,
+.profile-plaque > p {
+  text-align: left;
+}
+.profile-detailsWrapper {
+  margin: 0.5rem 0 0.7rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.profile-detailsWrapper > p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0rem;
+}
+.profile-detailLabel {
+  font-weight: bold;
+  /* text-decoration: underline; */
+}

@@ -1,0 +1,6 @@
+textarea.form-control {
+  height: 15ch;
+  width: 45rem;
+  max-width: 100%;
+  white-space: pre-wrap;
+}

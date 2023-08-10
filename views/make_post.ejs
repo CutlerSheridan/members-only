@@ -2,7 +2,7 @@
   <h1><%= title %></h1>
 
   <% if (locals.currentUser) { %>
-  <form method='POST' action=''>
+  <form method='POST' action='' class='makePost-form'>
     <div class="form-group">
       <label for="post-title">Title:</label>
       <input class="form-control" id='post-title' name='post_title' value='<%= locals.post ? post.title : null %>' />

@@ -3,7 +3,7 @@
   --clr-2: rgb(88, 88, 88);
   --clr-3: rgb(242, 242, 242);
   --clr-4: rgb(200, 200, 200);
-  font-family: Helvetica, sans-serif;
+  font-family: 'Poppins', Helvetica, sans-serif;
   font-size: 62.5%;
   color: var(--clr-1);
   background-color: var(--clr-1);
@@ -20,23 +20,33 @@
 body {
   height: 100%;
   width: 100%;
-  font-size: 2rem;
+  font-size: 1.8rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Ruwudu', serif;
+  font-weight: 700;
 }
 h1 {
-  font-size: 2.8rem;
+  margin-bottom: -1.5rem;
+  font-size: 3.2rem;
 }
 a,
 button {
   padding: 0.3rem 0.5rem;
-  background: var(--clr-1);
-  color: var(--clr-3);
+  background: var(--clr-3);
+  color: var(--clr-1);
   text-decoration: none;
   border: none;
   cursor: pointer;
 }
 a:hover,
 button:hover {
-  background: var(--clr-2);
+  background: var(--clr-4);
 }
 @media only screen and (touch: touch) {
   a:hover,
@@ -45,13 +55,11 @@ button:hover {
   }
   a:active,
   button:active {
-    background: var(--clr-2);
+    background: var(--clr-4);
   }
 }
 
 /* NAVBAR START */
-header {
-}
 nav {
   padding: 0 1rem;
   height: 6rem;
@@ -59,12 +67,12 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 @media only screen and (min-width: 600px) {
   nav {
     justify-content: flex-end;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 nav > a {
@@ -92,7 +100,7 @@ nav > a:hover {
   align-items: center;
 }
 .plaque {
-  margin: 0 1.5rem 1.5rem 1.5rem;
+  margin: 0 1.5rem 0 1.5rem;
   padding: 1.5rem 2.1rem;
   display: flex;
   flex-direction: column;
@@ -100,10 +108,23 @@ nav > a:hover {
   color: var(--clr-1);
   background: var(--clr-3);
 }
-.plaque button,
-.plaque a {
-  margin-top: 1rem;
-}
 .plaque > p {
   text-align: center;
+}
+.plaque a,
+.plaque button {
+  margin-top: 1rem;
+  background: var(--clr-1);
+  color: var(--clr-3);
+}
+.plaque a:hover {
+  background: var(--clr-2);
+}
+@media only screen and (touch: touch) {
+  .plaque a:hover {
+    background: var(--clr-1);
+  }
+  .plaque a:active {
+    background: var(--clr-2);
+  }
 }

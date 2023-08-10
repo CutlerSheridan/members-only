@@ -18,10 +18,20 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 ##### Style
 
-- decide on fonts
 - add credit
 
 #### DONE
+
+_0.4.4_
+
+- decide on fonts
+- adjust font sizes
+- reformat card attributions on mobile
+- move "Make post" button out of intro plaque
+- adjust card attribution color
+- reformat Profile layout
+- adjust form width
+- adjust textarea width
 
 _0.4.3_
 

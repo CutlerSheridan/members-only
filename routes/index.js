@@ -335,7 +335,7 @@ router.get('/post', (req, res, next) => {
   res.render('layout', {
     ejsFile: 'make_post',
     title: 'New Post',
-    stylesheets: ['form'],
+    stylesheets: ['form', 'make_post'],
   });
 });
 router.post('/post', [

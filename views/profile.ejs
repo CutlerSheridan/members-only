@@ -1,11 +1,12 @@
 <div class="plaque profile-plaque">
   <h1><%= title %></h1>
   <% if (locals.currentUser) { %>
-  <h2>Username: <%= currentUser.username %></h2>
+  <div class="profile-detailsWrapper">
+    <p class='profile-detailGroup'><span class="profile-detailLabel">Username:</span> <%= currentUser.username %></p>
+    <p class='profile-detailGroup'><span class="profile-detailLabel">Name:</span> <%= currentUser.getFullName() %></p>
+    <p class='profile-detailGroup'><span class="profile-detailLabel">Email:</span> <%= currentUser.email %></p>
+  </div>
 
-  <p>Name: <%= currentUser.getFullName() %></p>
-
-  <p>Email: <%= currentUser.email %></p>
   <p>Member: <%= currentUser.isMember ? '✅' : '❌' %></p>
   <p>Admin: <%= currentUser.isAdmin ? '✅' : '❌' %></p>
   <a href='/edit-profile'>Edit profile</a>

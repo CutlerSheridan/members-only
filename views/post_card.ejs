@@ -5,7 +5,7 @@
   <div class='post-divider'></div>
   <div class='card-attribution'>
     <div>Posted by: <%= post.user_info[0].username %></div>
-    <div>•</div>
+    <div class='card-hiddenWhenMobile'>•</div>
     <div><%= post.formatDate() %></div>
   </div>
   <% } %>
