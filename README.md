@@ -23,6 +23,11 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### DONE
 
+_0.4.3_
+
+- make nav prettier
+- adjust card heading font size
+
 _0.4.2_
 
 - make headings bigger

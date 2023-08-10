@@ -60,12 +60,26 @@ nav {
   align-items: center;
   gap: 1rem;
   font-size: 1.8rem;
-  background: var(--clr-3);
 }
 @media only screen and (min-width: 600px) {
   nav {
     justify-content: flex-end;
     font-size: 2rem;
+  }
+}
+nav > a {
+  background: var(--clr-3);
+  color: var(--clr-1);
+}
+nav > a:hover {
+  background: var(--clr-4);
+}
+@media only screen and (touch: touch) {
+  nav > a:hover {
+    background: var(--clr-3);
+  }
+  nav > a:active {
+    background: var(--clr-4);
   }
 }
 /* NAVBAR END */
