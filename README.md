@@ -18,9 +18,11 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 ##### Style
 
-- add credit
-
 #### DONE
+
+_0.4.5_
+
+- add credit
 
 _0.4.4_
 

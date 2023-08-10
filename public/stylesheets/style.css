@@ -92,8 +92,34 @@ nav > a:hover {
 }
 /* NAVBAR END */
 
+/* FOOTER START */
+footer {
+  padding: 1.5rem;
+  font-size: 1.4rem;
+  font-family: monospace;
+  color: var(--clr-3);
+}
+@media only screen and (min-width: 600px) {
+  footer {
+    padding: 1.5rem 3rem;
+  }
+}
+footer a {
+  margin: 0;
+  padding: 0;
+  background: inherit;
+  color: inherit;
+  text-decoration: underline;
+}
+footer a:hover {
+  background: inherit;
+  color: var(--clr-4);
+}
+/* FOOTER END */
+
 .content-wrapper {
   margin: 3rem auto;
+  min-height: calc(100vh - 18rem);
   max-width: 80rem;
   display: flex;
   flex-direction: column;
