@@ -362,4 +362,13 @@ router.post('/post', [
   }),
 ]);
 
+router.post(
+  '/delete-post',
+  asyncHandler(async (req, res, next) => {
+    const id = new ObjectId(req.body.post_id);
+    await db.collection('posts').deleteOne({ _id: id });
+    res.redirect('/');
+  })
+);
+
 module.exports = router;

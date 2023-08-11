@@ -25,10 +25,41 @@
   background: var(--clr-3);
   border: 2px solid var(--clr-3);
 }
-.post-card > h2 {
+.post-titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.post-card h2 {
   margin-bottom: -1.4rem;
   font-size: 2.4rem;
   text-decoration: underline;
+}
+.post-titleWrapper > form {
+  margin: 0;
+  padding: 0;
+  width: min-content;
+  display: flex;
+}
+.post-deleteButton {
+  padding: 0 0.5rem;
+  font-size: 1.4rem;
+  border: 1px solid var(--clr-5);
+  color: var(--clr-5);
+}
+.post-deleteButton:hover {
+  background: var(--clr-5);
+  color: var(--clr-3);
+}
+@media only screen and (touch: touch) {
+  .post-deleteButton:hover {
+    background: inherit;
+    color: var(--clr-5);
+  }
+  .post-deleteButton:active {
+    background: var(--clr-5);
+    color: var(--clr-3);
+  }
 }
 .post-divider {
   margin-top: 0.8rem;

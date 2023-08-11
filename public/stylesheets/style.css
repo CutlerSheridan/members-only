@@ -3,6 +3,7 @@
   --clr-2: rgb(88, 88, 88);
   --clr-3: rgb(242, 242, 242);
   --clr-4: rgb(200, 200, 200);
+  --clr-5: crimson;
   font-family: 'Poppins', Helvetica, sans-serif;
   font-size: 62.5%;
   color: var(--clr-1);

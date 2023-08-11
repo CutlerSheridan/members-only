@@ -1,5 +1,13 @@
 <div class='post-card'>
-  <h2 class='post-title'><%= post.title %></h2>
+  <div class="post-titleWrapper">
+    <h2 class='post-title'><%= post.title %></h2>
+    <form class='post-deleteButtonForm' method='POST' action='/delete-post'>
+      <% if (currentUser?.isAdmin) { %>
+      <input type='hidden' id='delete-post-<%= post._id %>' name='post_id' value='<%= post._id %>' required />
+      <button class='post-deleteButton'>X</button>
+      <% } %>
+    </form>
+  </div>
   <p class='post-content'><%= post.content %></p>
   <% if (currentUser?.isMember || currentUser?.isAdmin) { %>
   <div class='post-divider'></div>

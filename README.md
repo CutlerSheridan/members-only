@@ -12,13 +12,16 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 ##### Features
 
-- add ability for admin to delete messages
-
 ##### Behavior
 
 ##### Style
 
 #### DONE
+
+_0.5.0_
+
+- add ability to delete posts
+- restrict post deletion ability to admins
 
 _0.4.5_
 
