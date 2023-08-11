@@ -6,6 +6,8 @@ Post messages. If you're not signed in, you can view messages, but not who poste
 
 Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
+See the site deployed [here](https://members-only-production-ba11.up.railway.app/). The club password is "secret".
+
 #### TODO NEXT
 
 #### TODO LATER
