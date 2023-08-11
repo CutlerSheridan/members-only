@@ -6,10 +6,21 @@ const logger = require('morgan');
 const session = require('express-session');
 const User = require('./models/User');
 
+const compression = require('compression');
+const helmet = require('helmet');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const limiter = require('express-rate-limit')({
+  windowMs: 1 * 60 * 1000,
+  max: 30,
+});
 
 const app = express();
+
+app.use(compression());
+app.use(helmet());
+app.use(limiter);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

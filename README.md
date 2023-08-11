@@ -18,6 +18,10 @@ Made using Node, Express, MongoDB, Passport, bcryptjs, EJS, HTML, CSS.
 
 #### DONE
 
+_1.0.0_
+
+- update app with production dependencies
+
 _0.5.0_
 
 - add ability to delete posts
